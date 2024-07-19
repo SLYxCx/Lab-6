@@ -10,9 +10,8 @@ You are encouraged to use the provided naming convention for ease of review.
 /* create variables to hold the values for modelName and duration */
 
 // INSERT YOUR CODE HERE
-
-
-
+let duration = 0.00;
+let modelName = "XYZ";
 
 
 /****************** helper function ******************/
@@ -26,11 +25,15 @@ You are encouraged to use the provided naming convention for ease of review.
 */
 
 // INSERT YOUR CODE HERE
-
-
-
-
-
+function recalculate() {
+    let costLabel = document.getElementById("calculated-cost");
+    if(modelName === "XYZ") {
+        costLabel.innerHTML = duration * 100.00;
+    } else {
+        costLabel.innerHTML = duration * 213.00;
+    }
+    
+}
 
 /****************** model button logic ******************/
 
@@ -42,12 +45,23 @@ You are encouraged to use the provided naming convention for ease of review.
     - if modelName is currently "CPRG", change the value of modelName to "XYZ", and change the innerHTML of the model-text span element to "Model XYZ"
     - then, recalculate() the total cost.
 - finally, uncomment the following line of JavaScript to have this function run automatically whenever the pseudo-button is clicked: */
-    // modelButton.addEventListener("click", changeModel);
+    
 
 // INSERT YOUR CODE HERE
 
-
-
+const modelButton = document.getElementById("model-button");
+function changeModel() {
+    let modeText = document.getElementById("model-text");
+    if(modelName == "XYZ") {
+        modelName = "CPRG";
+        modeText.innerHTML = "Model CPRG";
+    } else {
+        modelName = "XYZ";
+        modeText.innerHTML = "Model XYZ";
+    }
+    recalculate();
+}
+modelButton.addEventListener("click", changeModel);
 
 
 
@@ -64,6 +78,11 @@ You are encouraged to use the provided naming convention for ease of review.
 */
 
 // INSERT YOUR CODE HERE
-
-
-
+const durButton = document.getElementById("duration-button");
+function changeDuration() {
+    let durText = document.getElementById("duration-text");
+    duration = prompt("How long would you like to book for? ");
+    durText.innerHTML = duration;
+    recalculate();
+}
+durButton.addEventListener("click", changeDuration);
